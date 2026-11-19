@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mi Cafetal — prototipo
 
-## Getting Started
+Sistema híbrido de alertas tempranas de roya y broca. Prototipo funcional de la
+"Arquitectura consolidada", sin el módulo IoT, sin Redis y sin la PWA instalable.
 
-First, run the development server:
+## Cómo correrlo
+
+Requiere **Node 24** (usa el módulo `node:sqlite` incluido en Node).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- App del caficultor: <http://localhost:3000>
+- Panel de cooperativas: <http://localhost:3000/cooperativa>
+- La base SQLite se crea sola en `data/micafetal.db` (otra ruta: `MICAFETAL_DB`).
+  Para empezar de cero, borre la carpeta `data/`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Qué parte del diagrama cubre
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Diagrama | Prototipo |
+|---|---|
+| Capa 1 · APIs de clima | Open-Meteo (`src/lib/open-meteo.ts`), 7 días hora a hora; caché de 15 min. El IDEAM (datos.gov.co) se muestra como estación de contraste (`src/lib/ideam.ts`). |
+| Capa 1 · Captura local | App para celular: reportes, floración y respuestas; guarda sin señal y sincroniza al volver la señal (`POST /api/sincronizar`). |
+| Capa 2 · Validación y fusión | Rangos válidos (T, HR, lluvia) y corrección por altitud `T_finca = T_est + 0,0065 × (h_est − h_finca)` (`src/lib/riesgo.ts`). |
+| Capa 2 · Motor de reglas | IRF = 100 × (0,3·f_T + 0,4·f_HR + 0,3·f_P) para roya; 0–4 puntos para broca, con «plaga en la zona» desde los reportes de vecinos a ≤10 km. |
+| Capa 2 · Asistente | Mensaje de ≤70 caracteres según la causa principal (`src/lib/mensajes.ts`). |
+| Capa 3 · Persistencia | SQLite en lugar de PostgreSQL (`src/lib/db.ts`). |
+| Capa 4 · Gestor y pasarela | Alerta en riesgo ALTO; WhatsApp si la finca se conectó en las últimas 24 h, si no cae a SMS. **Simulado**: se registra, no se envía (`src/lib/alertas.ts`). |
+| Capa 4 · Dashboard + GIS | `/cooperativa`: indicadores, mapa por zona (Leaflet + OpenStreetMap), fincas, alertas y reportes. |
+| Retroalimentación | La respuesta «¿encontró…?» confirma la última alerta; A = confirmadas / enviadas × 100, con aviso al administrador si A < 80 %. La recalibración de pesos es manual. |
 
-## Learn More
+## Diferencias declaradas
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Fuente de clima**: el IDEAM publica con 1–2 días de retraso, por eso el cálculo usa Open-Meteo.
+- **Cenicafé** no tiene API pública del estado fitosanitario; se usan sus umbrales.
+- **Consulta cada 15 min**: en el prototipo, el botón «Actualizar ahora» del panel llama a `POST /api/ciclo`; en producción lo llamaría un cron.
+- Sin inicio de sesión en el panel.
+- SQLite local: no sirve en hosting sin disco persistente (p. ej. funciones serverless).
