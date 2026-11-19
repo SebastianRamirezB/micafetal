@@ -1,0 +1,5 @@
+﻿prueba;kpi;meta;medido;cumple
+P1;IRF de roya = 100·(0,3fT+0,4fHR+0,3fP);Desvío 0 frente al cálculo a mano;"32/32 casos iguales; desvío máx. 0";sí
+P2;Broca: puntos 0–4 (medio ≥ 2, alto ≥ 3);16/16 combinaciones correctas;16/16;sí
+P3;Mensaje SMS ≤ 70 caracteres;100 % de los mensajes en 1 segmento;"17/17 mensajes distintos; máx. 70 car.";sí
+P4;T_finca = T_est + 0,0065·(h_est − h_finca);Desvío 0 °C;desvío máx. 0 °C;sí

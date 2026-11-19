@@ -1,0 +1,17 @@
+﻿caso;T_mayor_21C;altura_menor_1200m;lluvia_4_dias_o_mas;broca_vecinos_10km;puntos_esperados;puntos_app;nivel_esperado;nivel_app;coincide
+1;no;no;no;no;0;0;bajo;bajo;sí
+2;sí;no;no;no;1;1;bajo;bajo;sí
+3;no;sí;no;no;1;1;bajo;bajo;sí
+4;sí;sí;no;no;2;2;medio;medio;sí
+5;no;no;sí;no;1;1;bajo;bajo;sí
+6;sí;no;sí;no;2;2;medio;medio;sí
+7;no;sí;sí;no;2;2;medio;medio;sí
+8;sí;sí;sí;no;3;3;alto;alto;sí
+9;no;no;no;sí;1;1;bajo;bajo;sí
+10;sí;no;no;sí;2;2;medio;medio;sí
+11;no;sí;no;sí;2;2;medio;medio;sí
+12;sí;sí;no;sí;3;3;alto;alto;sí
+13;no;no;sí;sí;2;2;medio;medio;sí
+14;sí;no;sí;sí;3;3;alto;alto;sí
+15;no;sí;sí;sí;3;3;alto;alto;sí
+16;sí;sí;sí;sí;4;4;alto;alto;sí

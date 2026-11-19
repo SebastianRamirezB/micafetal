@@ -1,0 +1,21 @@
+﻿n;origen;plaga;nivel;mensaje;caracteres;codificacion;unidades;limite;segmentos;cumple_70
+1;App;roya;alto;ALERTA ROYA: riesgo alto por humedad. Revise hojas bajas.;57;GSM-7;57;160;1;sí
+2;App;roya;bajo;AVISO ROYA: riesgo bajo por temperatura. Siga revisando como siempre.;69;GSM-7;69;160;1;sí
+3;App;roya;bajo;AVISO ROYA: riesgo bajo por lluvias. Siga revisando como siempre.;65;GSM-7;65;160;1;sí
+4;App;roya;bajo;AVISO ROYA: riesgo bajo por humedad. Siga revisando como siempre.;65;GSM-7;65;160;1;sí
+5;App;roya;medio;AVISO ROYA: riesgo medio por lluvias. Revise hojas bajas esta semana.;69;GSM-7;69;160;1;sí
+6;App;roya;medio;AVISO ROYA: riesgo medio por humedad. Revise hojas bajas esta semana.;69;GSM-7;69;160;1;sí
+7;App;roya;medio;AVISO ROYA: riesgo medio. Revise hojas bajas esta semana.;57;GSM-7;57;160;1;sí
+8;App;roya;alto;ALERTA ROYA: riesgo alto por temperatura. Revise hojas bajas.;61;GSM-7;61;160;1;sí
+9;App;broca;bajo;AVISO BROCA: riesgo bajo. Siga revisando como siempre.;54;GSM-7;54;160;1;sí
+10;App;broca;bajo;AVISO BROCA: riesgo bajo por temperatura. Siga revisando como siempre.;70;GSM-7;70;160;1;sí
+11;App;broca;medio;AVISO BROCA: riesgo medio por temperatura. Revise granos esta semana.;69;GSM-7;69;160;1;sí
+12;App;broca;bajo;AVISO BROCA: riesgo bajo por lluvias. Siga revisando como siempre.;66;GSM-7;66;160;1;sí
+13;App;broca;medio;AVISO BROCA: riesgo medio por lluvias. Revise granos esta semana.;65;GSM-7;65;160;1;sí
+14;App;broca;alto;ALERTA BROCA: riesgo alto por lluvias. Revise y recoja granos.;62;GSM-7;62;160;1;sí
+15;App;broca;bajo;AVISO BROCA: riesgo bajo por broca cerca. Siga revisando como siempre.;70;GSM-7;70;160;1;sí
+16;App;broca;medio;AVISO BROCA: riesgo medio por broca cerca. Revise granos esta semana.;69;GSM-7;69;160;1;sí
+17;App;broca;alto;ALERTA BROCA: riesgo alto por broca cerca. Revise y recoja granos.;66;GSM-7;66;160;1;sí
+18;Etapa 3 (declaraba 68);roya;alto;ALERTA ROYA: Finca [ID]. Temp 22C, HR 92%. Accion: Revisar hojas bajas. Mas info en [URL];89;GSM-7;93;160;1;no
+19;Etapa 3 (declaraba 60);roya;alto;ROYA ALTA finca 023. Revise hojas bajas hoy. Info: lnk.co/a1;60;GSM-7;60;160;1;sí
+20;Etapa 3;broca;alto;"Riesgo alto de broca; revise los frutos esta semana.";52;GSM-7;52;160;1;sí
