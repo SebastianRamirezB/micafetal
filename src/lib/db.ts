@@ -3,13 +3,19 @@
 // confirmaciones y envíos simulados.
 
 import { mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { DatabaseSync, type SQLInputValue } from "node:sqlite";
 import { FINCAS, type Informe, type Nivel, type PlagaId } from "./datos";
 import { distanciaKm } from "./geo";
 
+// En Vercel el disco es de solo lectura salvo /tmp (efímero: se pierde al
+// reiniciar la función y no se comparte entre instancias).
 const RUTA =
-  process.env.MICAFETAL_DB ?? path.join(process.cwd(), "data", "micafetal.db");
+  process.env.MICAFETAL_DB ??
+  (process.env.VERCEL
+    ? path.join(tmpdir(), "micafetal.db")
+    : path.join(process.cwd(), "data", "micafetal.db"));
 
 /** Radio y ventana de «plaga en la zona». */
 export const ZONA = { km: 10, dias: 14 };
